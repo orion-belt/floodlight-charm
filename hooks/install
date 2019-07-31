@@ -1,15 +1,17 @@
 #!/bin/bash
 set -e
-status-set maintenance "Installing zip package."
+status-set maintenance "Installing dependencies"
 sudo apt update -y
 sudo apt install git -y
 sudo apt-get install build-essential ant maven python-dev -y
 sudo apt-get install build-essential openjdk-8-jdk ant maven python-dev eclipse -y
+status-set maintenance "Setting Java Home"
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export JRE_HOME
 export PATH
+status-set maintenance "Cloning floodlight"
 git clone -b v1.2  git://github.com/floodlight/floodlight.git
 cd floodlight
 git submodule init
@@ -18,7 +20,8 @@ ant
 sudo mkdir /var/lib/floodlight
 sudo chmod 777 /var/lib/floodlight
 
-cd floodlight/ && java -jar ./target/floodlight.jar
+status-set active "Running floodlight"
+cd ../floodlight/ && java -jar ./target/floodlight.jar
 # exec ./hooks/start
-status-set maintenance "Active"
+
 

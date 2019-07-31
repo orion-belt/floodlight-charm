@@ -4,7 +4,7 @@
  watch -c juju status --relations --color
 ```
 
-```
+```bash
 Model    Controller  Cloud/Region         Version  SLA          Timestamp
 default  localhost   localhost/localhost  2.6.5    unsupported  17:50:51+08:00
 

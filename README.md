@@ -1,25 +1,35 @@
-#### 1. Set up Juju environment
+# Overview
 
-For how to setup Juju, refer wiki page
-https://github.com/orion-belt/floodlight-controller/wiki
+he FlexRAN master controller was built from scratch using C++ and currently supports x64 Linux systems. The implementation supports both a real-time and non real-time mode of operation to cater for different time criticalities of the deployed applications and the requirements of the network operators. 
 
-#### 2. Deploy directly from Juju charm store
-```
-juju deploy cs:~rohan-kharade/floodlight-0
-```
+# Usage
 
-##### OR
-#### 2. Clone repo and deploy as local charm
-```
-git clone https://github.com/orion-belt/floodlight-controller.git
-juju deploy ./floodlight-charm
-```
+This charm is available in the Juju Charm Store, to deploy you'll need a working 
+Juju installation, and a successful bootstrap.
 
-#### 3. Test and verify install
-You can use following command to check installation process
-```
-watch juju status --relations 
-```
-After successfull installation of charm, you will see "Running floodlight" message. <br/>
-Now you can also access controller UI as below <br/>
-`https://<controller_ip>:8080/ui/index.html`
+    juju deploy flexran-rtc
+
+# Configuration
+
+You can tweak various options for your flexran-rtc deployment:
+
+  * snap -  set the channel to install  the FlexRAN snap 
+ 
+ * bind_addr - set the network interface address to which the controller is binded. Defaul is all interfaces. 
+
+ * bind_sbi_port -  set the port number for the south-bound interface towards the BS.
+
+ * bind_nbi_port -  set the port number for the north-bound interface towards software-development kit and the network control apps.
+ 
+
+
+# Contact Information
+
+## FLEXRAN 
+ - [FLEXRAN website](http://mosaic-5g.io/flexran/)
+## OpenairInterface
+
+
+## MOSAIC-5G
+- [MOSIAC-5G website](mosiac-5g.org)
+- [MOSAIC-5G mailing list](contact@mosaic-5g.io)

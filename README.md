@@ -1,3 +1,10 @@
+#### Deploy directly from Juju charm store
+```
+juju deploy cs:~rohan-kharade/floodlight-0
+```
+
+##### OR
+#### Clone repo and deploy as local charm
 ```
 git clone https://github.com/orion-belt/floodlight-controller.git
 juju deploy ./floodlight-charm

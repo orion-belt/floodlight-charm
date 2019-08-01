@@ -5,7 +5,7 @@ https://github.com/orion-belt/floodlight-controller/wiki
 
 #### 2. Deploy directly from Juju charm store
 ```
-juju deploy cs:~rohan-kharade/floodlight-0
+juju deploy cs:~rohan-kharade/floodlight-1
 ```
 
 ##### OR

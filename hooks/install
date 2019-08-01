@@ -34,17 +34,18 @@ export JAVA_HOME
 export JRE_HOME
 export PATH
 
-status-set maintenance "Cloning floodlight"
+status-set maintenance "Cloning floodlight v1.2"
 git clone -b v1.2  git://github.com/floodlight/floodlight.git
 cd floodlight
 git submodule init
 git submodule update
+
+status-set maintenance "Building floodlight v1.2"
 ant
 sudo mkdir /var/lib/floodlight
 sudo chmod 777 /var/lib/floodlight
 
-status-set active "Running floodlight"
-cd ../floodlight/ && java -jar ./target/floodlight.jar
-# exec ./hooks/start
+status-set maintenance "Calling start hook"
+exec ./hooks/start
 
 

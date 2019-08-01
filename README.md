@@ -1,3 +1,5 @@
+Get this charm at Juju charm store https://jaas.ai/u/rohan-kharade/floodlight/4
+
 #### 1. Set up Juju environment
 
 For how to setup Juju, refer wiki page
@@ -5,7 +7,7 @@ https://github.com/orion-belt/floodlight-controller/wiki
 
 #### 2. Deploy directly from Juju charm store
 ```
-juju deploy cs:~rohan-kharade/floodlight-2
+juju deploy cs:~rohan-kharade/floodlight-4
 ```
 
 ##### OR

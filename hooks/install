@@ -45,6 +45,6 @@ sudo mkdir /var/lib/floodlight
 sudo chmod 777 /var/lib/floodlight
 
 status-set maintenance "Calling start hook"
-exec ./hooks/start
+./hooks/start
 
 

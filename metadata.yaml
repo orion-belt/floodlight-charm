@@ -1,5 +1,5 @@
 name: floodlight
-summary: <Fill in summary here>
+summary: The open SDN controller
 maintainer: rohan <kharade@eurecom.fr>
 description: |
   floodlight sdn controller

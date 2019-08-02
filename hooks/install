@@ -43,6 +43,7 @@ status-set maintenance "Building floodlight v1.2"
 ant
 sudo mkdir /var/lib/floodlight
 sudo chmod 777 /var/lib/floodlight
+cd ../
 
 status-set maintenance "Calling start hook"
 ./hooks/start

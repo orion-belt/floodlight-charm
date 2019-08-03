@@ -18,5 +18,9 @@
 # brief start the floodlight sdn controller
 # author kharade@eurecom.fr
 
+start(){
+  cd floodlight/ && java -jar ./target/floodlight.jar
+}
+
 status-set active "Running floodlight"
-cd floodlight/ && java -jar ./target/floodlight.jar
+start

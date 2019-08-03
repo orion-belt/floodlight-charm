@@ -20,30 +20,45 @@
 
 set -e
 
+install_dependencies(){
+  sudo apt update -y
+  sudo apt install git -y
+  sudo apt-get install build-essential ant maven python-dev -y
+  sudo apt-get install build-essential openjdk-8-jdk -y
+}
+
+set_java(){
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+  PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+  export JAVA_HOME
+  export JRE_HOME
+  export PATH
+}
+
+clone_floodlight(){
+  git clone -b v1.2  git://github.com/floodlight/floodlight.git
+  cd floodlight
+  git submodule init
+  git submodule update
+}
+
+build_floodlight(){
+  ant
+  sudo mkdir /var/lib/floodlight
+  sudo chmod 777 /var/lib/floodlight
+  cd ../
+}
 status-set maintenance "Installing dependencies"
-sudo apt update -y
-sudo apt install git -y
-sudo apt-get install build-essential ant maven python-dev -y
-sudo apt-get install build-essential openjdk-8-jdk ant maven python-dev eclipse -y
+install_dependencies
 
 status-set maintenance "Setting Java Home"
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
-export JAVA_HOME
-export JRE_HOME
-export PATH
+set_java
 
 status-set maintenance "Cloning floodlight v1.2"
-git clone -b v1.2  git://github.com/floodlight/floodlight.git
-cd floodlight
-git submodule init
-git submodule update
+clone_floodlight
 
 status-set maintenance "Building floodlight v1.2"
-ant
-sudo mkdir /var/lib/floodlight
-sudo chmod 777 /var/lib/floodlight
-cd ../
+build_floodlight
 
 status-set maintenance "Calling start hook"
 ./hooks/start

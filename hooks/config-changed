@@ -14,6 +14,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-# file install 
-# brief install the floodlight sdn controller
+# file config-changed 
+# brief manage the config changes of floodlight controller, and occurs everytime a new configuration value is updated (juju set)
 # author  kharade@eurecom.fr
+
+set -e
+source $CHARM_DIR/utils/common
+
+status-set maintenance "Config-Changed hook"
+stop_floodlight
+
+
